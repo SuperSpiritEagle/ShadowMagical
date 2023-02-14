@@ -35,9 +35,8 @@ namespace Boss_Fight
             int fightTwo = 2;
             int fightThree = 3;
             int fightFour = 4;
+            int fightCombinarium = 14;
             int fight;
-            int minfight = 1;
-            int maxfight = 5;
             bool isLive = true;
             aberto = random.Next(minSpellOne, maxSpellOne);
             bombardo = random.Next(minSpellTwo, maxSpellTwo);
@@ -48,14 +47,20 @@ namespace Boss_Fight
             skimmer = random.Next(minSpellThree, maxSpellThree);
             defodio = random.Next(minSpellFour, maxSpellFour);
 
+            Console.WriteLine("1 ShadowMagician aberto, Boss  avis");
+            Console.WriteLine("2 ShadowMagician bombardo, Boss  baubillius");
+            Console.WriteLine("3 ShadowMagician descendo, Boss  skimer");
+            Console.WriteLine("4 ShadowMagician imperius, Boss  defidio");
+            Console.WriteLine("14 Combinarium");
+            Console.WriteLine();
             Console.WriteLine($"Hp Boss = { boss}");
             Console.WriteLine($"Hp ShadowMagician = {shadowMagician}");
             Console.WriteLine();
 
             while (isLive)
             {
-             
-                fight = random.Next(minfight, maxfight);
+                Console.WriteLine("Выберите заклинание");
+                fight = Convert.ToInt32(Console.ReadLine());
 
                 if (fight == fightOne)
                 {
@@ -78,14 +83,30 @@ namespace Boss_Fight
                     Console.WriteLine($"descendo Hp Boss = { boss}");
                     Console.WriteLine($"skimmer Hp ShadowMagician = {shadowMagician}");
                 }
-                else if(fight == fightFour)
+                else if (fight == fightFour)
                 {
                     shadowMagician -= defodio;
                     boss -= imperius;
                     Console.WriteLine($"imperius Hp Boss = { boss}");
                     Console.WriteLine($"defodio Hp ShadowMagician = {shadowMagician}");
                 }
-                if (shadowMagician <= 0||boss<=0)
+                else if (fight == fightCombinarium)
+                {
+                    shadowMagician += random.Next(minSpellFour, maxSpellFour);
+                    boss += random.Next(minSpellFour, maxSpellFour);
+                    shadowMagician -= random.Next(minHP, maxHP);
+                    boss -= random.Next(minHP, maxHP);
+                    Console.WriteLine($"Combinarium Hp Boss = { boss}");
+                    Console.WriteLine($"Combinarium Hp ShadowMagician = {shadowMagician}");
+                }
+                else if (fight < fightOne || fight > fightFour)
+                {
+                    if (fight == fightCombinarium) continue;
+
+                    Console.WriteLine("Данные не верны");
+                }
+
+                if (shadowMagician <= 0 || boss <= 0)
                 {
                     isLive = false;
                 }
