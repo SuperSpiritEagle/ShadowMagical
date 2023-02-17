@@ -6,16 +6,16 @@ namespace Boss_Fight
     {
         static void Main(string[] args)
         {
-            int shadowMagician;
-            int aberto;
-            int bombardo;
-            int descendo;
-            int imperius;
-            int boss;
-            int avis;
-            int baubillius;
-            int skimmer;
-            int defodio;
+            int shadowMagicianHP;
+            int abertoDamage;
+            int bombardoHealth;
+            int descendoDamage;
+            int imperiusDamage;
+            int bossHP;
+            int avisDamage;
+            int baubilliusHealth;
+            int skimmerDamage;
+            int defodioDamage;
             int maxHP = 1000;
             int minHP = 300;
             int minSpellOne = 30;
@@ -29,75 +29,74 @@ namespace Boss_Fight
 
             Random random = new Random();
 
-            shadowMagician = random.Next(minHP, maxHP);
-            boss = random.Next(minHP, maxHP);
+            shadowMagicianHP = random.Next(minHP, maxHP);
+            bossHP = random.Next(minHP, maxHP);
             int fightOne = 1;
             int fightTwo = 2;
             int fightThree = 3;
             int fightFour = 4;
             int fightCombinarium = 14;
             int fight;
-            bool isLive = true;
-            aberto = random.Next(minSpellOne, maxSpellOne);
-            bombardo = random.Next(minSpellTwo, maxSpellTwo);
-            descendo = random.Next(minSpellThree, maxSpellThree);
-            imperius = random.Next(minSpellFour, maxSpellFour);
-            avis = random.Next(minSpellOne, maxSpellOne);
-            baubillius = random.Next(minSpellTwo, maxSpellTwo);
-            skimmer = random.Next(minSpellThree, maxSpellThree);
-            defodio = random.Next(minSpellFour, maxSpellFour);
+            abertoDamage = random.Next(minSpellOne, maxSpellOne);
+            bombardoHealth = random.Next(minSpellTwo, maxSpellTwo);
+            descendoDamage = random.Next(minSpellThree, maxSpellThree);
+            imperiusDamage = random.Next(minSpellFour, maxSpellFour);
+            avisDamage = random.Next(minSpellOne, maxSpellOne);
+            baubilliusHealth = random.Next(minSpellTwo, maxSpellTwo);
+            skimmerDamage = random.Next(minSpellThree, maxSpellThree);
+            defodioDamage = random.Next(minSpellFour, maxSpellFour);
 
-            Console.WriteLine("1 ShadowMagician aberto, Boss  avis");
-            Console.WriteLine("2 ShadowMagician bombardo, Boss  baubillius");
-            Console.WriteLine("3 ShadowMagician descendo, Boss  skimer");
-            Console.WriteLine("4 ShadowMagician imperius, Boss  defidio");
-            Console.WriteLine("14 Combinarium");
+            Console.WriteLine($"{fightOne} ShadowWagician, Boss  avis");
+            Console.WriteLine($"{fightTwo} ShadowMagician bombardo, Boss  baubillius");
+            Console.WriteLine($"{fightThree} ShadowMagician descendo, Boss  skimer");
+            Console.WriteLine($"{fightFour} ShadowMagician imperius, Boss  defidio");
+            Console.WriteLine($"{fightCombinarium} Combinarium");
             Console.WriteLine();
-            Console.WriteLine($"Hp Boss = { boss}");
-            Console.WriteLine($"Hp ShadowMagician = {shadowMagician}");
+            Console.WriteLine($"Hp Boss = { bossHP}");
+            Console.WriteLine($"Hp ShadowMagician = {shadowMagicianHP}");
             Console.WriteLine();
 
-            while (isLive)
+            while (shadowMagicianHP > 0 && bossHP > 0)
             {
                 Console.WriteLine("Выберите заклинание");
                 fight = Convert.ToInt32(Console.ReadLine());
 
                 if (fight == fightOne)
                 {
-                    shadowMagician -= avis;
-                    boss -= aberto;
-                    Console.WriteLine($"avis Hp Boss = { boss}");
-                    Console.WriteLine($"aberdo Hp ShadowMagician = {shadowMagician}");
+                    shadowMagicianHP -= avisDamage;
+                    bossHP -= abertoDamage;
+                    Console.WriteLine($"avis Hp Boss = { bossHP}");
+                    Console.WriteLine($"aberdo Hp ShadowMagician = {shadowMagicianHP}");
                 }
                 else if (fight == fightTwo)
                 {
-                    shadowMagician += bombardo;
-                    boss += baubillius;
-                    Console.WriteLine($"baubillius Hp Boss = { boss}");
-                    Console.WriteLine($"bombardo Hp ShadowMagician = {shadowMagician}");
+                    shadowMagicianHP += bombardoHealth;
+                    bossHP += baubilliusHealth;
+                    Console.WriteLine($"baubillius Hp Boss = { bossHP}");
+                    Console.WriteLine($"bombardo Hp ShadowMagician = {shadowMagicianHP}");
                 }
                 else if (fight == fightThree)
                 {
-                    shadowMagician -= skimmer;
-                    boss -= descendo;
-                    Console.WriteLine($"descendo Hp Boss = { boss}");
-                    Console.WriteLine($"skimmer Hp ShadowMagician = {shadowMagician}");
+                    shadowMagicianHP -= skimmerDamage;
+                    bossHP -= descendoDamage;
+                    Console.WriteLine($"descendo Hp Boss = { bossHP}");
+                    Console.WriteLine($"skimmer Hp ShadowMagician = {shadowMagicianHP}");
                 }
                 else if (fight == fightFour)
                 {
-                    shadowMagician -= defodio;
-                    boss -= imperius;
-                    Console.WriteLine($"imperius Hp Boss = { boss}");
-                    Console.WriteLine($"defodio Hp ShadowMagician = {shadowMagician}");
+                    shadowMagicianHP -= defodioDamage;
+                    bossHP -= imperiusDamage;
+                    Console.WriteLine($"imperius Hp Boss = { bossHP}");
+                    Console.WriteLine($"defodio Hp ShadowMagician = {shadowMagicianHP}");
                 }
                 else if (fight == fightCombinarium)
                 {
-                    shadowMagician += random.Next(minSpellFour, maxSpellFour);
-                    boss += random.Next(minSpellFour, maxSpellFour);
-                    shadowMagician -= random.Next(minHP, maxHP);
-                    boss -= random.Next(minHP, maxHP);
-                    Console.WriteLine($"Combinarium Hp Boss = { boss}");
-                    Console.WriteLine($"Combinarium Hp ShadowMagician = {shadowMagician}");
+                    shadowMagicianHP += random.Next(minSpellFour, maxSpellFour);
+                    bossHP += random.Next(minSpellFour, maxSpellFour);
+                    shadowMagicianHP -= random.Next(minHP, maxHP);
+                    bossHP -= random.Next(minHP, maxHP);
+                    Console.WriteLine($"Combinarium Hp Boss = {bossHP}");
+                    Console.WriteLine($"Combinarium Hp ShadowMagician = {shadowMagicianHP}");
                 }
                 else if (fight < fightOne || fight > fightFour)
                 {
@@ -105,26 +104,21 @@ namespace Boss_Fight
 
                     Console.WriteLine("Данные не верны");
                 }
-
-                if (shadowMagician <= 0 || boss <= 0)
-                {
-                    isLive = false;
-                }
             }
 
             Console.WriteLine();
 
-            if (shadowMagician > boss)
+            if (shadowMagicianHP > bossHP)
             {
-                Console.WriteLine($"Победил shadowMagician Hp = {shadowMagician}");
+                Console.WriteLine($"Победил shadowMagician Hp = {shadowMagicianHP}");
             }
-            else if (shadowMagician <= 0 && boss <= 0)
+            else if (shadowMagicianHP <= 0 && bossHP <= 0)
             {
                 Console.WriteLine("Оба убиты");
             }
             else
             {
-                Console.WriteLine($"Победил Boss Hp = {boss}");
+                Console.WriteLine($"Победил Boss Hp = {bossHP}");
             }
         }
     }
